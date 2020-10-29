@@ -1,4 +1,5 @@
 const Page = require("./Page");
+const RoomSettingPage = require("./RoomSettingPage");
 const { By, until } = require('selenium-webdriver');
 const assert = require('assert').strict;
 
@@ -14,6 +15,11 @@ class WorkspacePage extends Page {
 
   enterRoomThruUrl(room) {
     this.driver.get(`${this.baseUrl}/workspaces/${this.workspace.slug}/rooms/${room.slug}`);
+  }
+
+  enterRoomConfiguration(room) {
+    this.driver.get(`${this.baseUrl}/workspaces/${this.workspace.slug}/rooms/${room.slug}/edit`);
+    return new RoomSettingPage(this.driver, room)
   }
 
   async enterRoom(room) {

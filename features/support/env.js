@@ -7,7 +7,8 @@ class CustomWorld {
     this.driver = new Builder()
       .forBrowser('firefox')
       .setFirefoxOptions(
-        new firefox.Options().headless()
+        new firefox.Options()
+        // new firefox.Options().headless()
       ).build();
   }
 }

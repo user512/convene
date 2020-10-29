@@ -62,3 +62,10 @@ Feature: Locking Rooms
   Given a Workspace with a Locked Room
   When a Workspace Member unlocks the Room with the correct Room Key
   Then the Room is Unlocked
+
+  @built
+  Scenario: Gray out access code input
+  Given a Workspace Member in Configure Room page
+  When a Workspace Member toggle room to be unlocked
+  Then the Access Code input is grayed out and disabled
+  

@@ -102,3 +102,31 @@ Then('the {actor} is informed they need to set {roomKey} when they are locking a
   // Write code here that turns the phrase above into concrete actions
   return 'pending';
 });
+
+Given('a {actor} in Configure {room} page', async function (actor, room) {
+  const listedRoom = new Room(`Listed Room 1`);
+  const workspace = new Workspace("System Test");
+  this.workspace = new WorkspacePage(this.driver, workspace)
+  this.roomSetting = await this.workspace.enterRoomConfiguration(listedRoom);
+});
+
+
+When('a {actor} toggle room to be unlocked', async function (actor) {
+  await this.roomSetting.setAccessLevel('unlocked');
+});
+
+
+Then('the Access Code input is grayed out and disabled', async function () {
+  // Write code here that turns the phrase above into concrete actions
+  // return 'pending'
+  // assert.equal(this.roomSetting.accessCodeInput.disabled)
+
+  const input = await this.roomSetting.accessCodeInput()
+  setTimeout(
+    async () => {
+      const enabled = await input.isEnabled()
+      console.log(enabled)
+      assert.strictEqual(enabled, false)
+      return;
+    }, 2000)
+});
