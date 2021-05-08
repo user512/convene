@@ -52,10 +52,12 @@ gem 'pg', '>= 0.18', '< 2.0'
 
 # User-facing features
 #
-# Allows logging in via magic links
-gem 'passwordless'
 # Provides powerful administration features
 gem 'administrate'
+# Authentication
+gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-onetime', github: 'thoughtafter/omniauth-onetime'
 
 # Date/Time and Internationalization
 #
